@@ -72,6 +72,26 @@ def showItem(category_name, item_name):
                             category = category_name,
                             categories = categories)
 
+# Add an item
+@app.route('/catalog/add', methods=['GET', 'POST'])
+def addItem():
+    return "This page will add an item"
+
+# Add an item to a Category
+@app.route('/catalog/<int:category_name>/add', methods=['GET', 'POST'])
+def addCategoryItem():
+    return "This page will add an item"
+
+# Edit an item
+@app.route('/catalog/<int:category_name>/<int:item_name>/edit', methods=['GET', 'POST'])
+def editItem():
+    return "This page will edit an item"
+
+# Delete an item
+@app.route('/catalog/<int:category_name>/<int:item_name>/delete', methods=['GET', 'POST'])
+def deleteItem():
+    return "This page will delete an item"
+
 
 # url_for static path processor
 # remove when deployed
