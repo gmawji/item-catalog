@@ -52,8 +52,7 @@ def showCatalog():
 def showCategory(category_name):
     categories = session.query(Category).order_by(asc(Category.name))
     category = session.query(Category).filter_by(name=category_name).one()
-    items = session.query(Items).filter_by(name=category_name)\
-                                .order_by(asc(Items.name))
+    items = session.query(Items).filter_by(category=category).order_by(asc(Items.name)).all()
     print items
     count = session.query(Items).filter_by(category=category).count()
     return render_template('public_items.html',
@@ -61,6 +60,17 @@ def showCategory(category_name):
                             categories = categories,
                             items = items,
                             count = count)
+
+# Display a Specific Item
+@app.route('/<category_name>/<item_name>/')
+@app.route('/catalog/<category_name>/<item_name>/')
+def showItem(category_name, item_name):
+    item = session.query(Items).filter_by(name=item_name).one()
+    categories = session.query(Category).all()
+    return render_template('public_itemdetail.html',
+                            item = item,
+                            category = category_name,
+                            categories = categories)
 
 
 # url_for static path processor
@@ -81,5 +91,5 @@ def dated_url_for(endpoint, **values):
 # Always at end of file !Important!
 if __name__ == '__main__':
     app.secret_key = 'DEV_SECRET_KEY'
-    app.debug = False
+    app.debug = True
     app.run(host = '0.0.0.0', port = 5000)
