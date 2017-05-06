@@ -113,9 +113,32 @@ def addCategoryItem(category_name):
                                 categories=categories)
 
 # Edit an item
-@app.route('/catalog/<int:category_name>/<int:item_name>/edit', methods=['GET', 'POST'])
-def editItem():
-    return "This page will edit an item"
+@app.route('/catalog/<category_name>/<item_name>/edit', methods=['GET', 'POST'])
+def editItem(category_name, item_name):
+    editedItem = session.query(Items).filter_by(name=item_name).one()
+    categories = session.query(Category).all()
+    # POST methods
+    if request.method == 'POST':
+        if request.form['name']:
+            editedItem.name = request.form['name']
+        if request.form['description']:
+            editedItem.description = request.form['description']
+        if request.form['picture']:
+            editedItem.picture = request.form['picture']
+        if request.form['category']:
+            category = session.query(Category).filter_by(name=request.form['category']).one()
+            editedItem.category = category
+        time = datetime.datetime.now()
+        editedItem.date = time
+        session.add(editedItem)
+        session.commit()
+        flash('Category Item Successfully Edited!')
+        return  redirect(url_for('showCategory',
+                                category_name=editedItem.category.name))
+    else:
+        return render_template('edititem.html',
+                                item=editedItem,
+                                categories=categories)
 
 # Delete an item
 @app.route('/catalog/<int:category_name>/<int:item_name>/delete', methods=['GET', 'POST'])
