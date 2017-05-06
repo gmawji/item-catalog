@@ -42,9 +42,9 @@ session = DBSession()
 def showCatalog():
     categories = session.query(Category).order_by(asc(Category.name))
     items = session.query(Items).order_by(desc(Items.date)).limit(5)
-        return render_template('public_catalog.html',
-                                categories = categories,
-                                items = items)
+    return render_template('public_catalog.html',
+                            categories = categories,
+                            items = items)
 
 
 # url_for static path processor
