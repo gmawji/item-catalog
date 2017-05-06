@@ -3,7 +3,7 @@
 
 <h1>Categories</h1>
 {% for c in categories %}
-    <a href="#"">
+    <a href="{{url_for('showCategory', category_name = c.name,)}}"">
         {{ c.name }}
     </a>
 {% endfor %}
@@ -11,6 +11,13 @@
 <h1>{{ item.name }}</h1>
 <p>{{ item.description }}</p>
 <img src="{{ item.picture }}" alt="{{ item.name }}">
-
+<div>
+    <a href = "{{url_for('editItem', category_name = item.category.name, item_name = item.name)}}">
+        Edit
+    </a>
+    <a href = "{{url_for('deleteItem', category_name = item.category.name, item_name = item.name)}}">
+        Delete
+    </a>
+</div>
 
 {% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+
+        <h1>Edit Item</h1>
+
+        <form action="{{url_for('editItem', category_name = item.category.name, item_name = item.name)}}" method = "post">
+            <div>
+                <label for="name">Name:</label>
+                <div>
+                    <input type ="text" maxlength="100" name="name" value="{{item.name}}">
+                </div>
+            </div>
+
+            <div>
+                <label for="description">Description:</label>
+                <div>
+                    <textarea maxlength="250" rows="3" name="description">{{item.description}}</textarea>
+                </div>
+            </div>
+
+            <div>
+                <label for="picture">Picture:</label>
+                <div>
+                    <img src="{{item.picture}}" alt="{{item.picture}}" class="img-thumbnail">
+                    <input type ="url" maxlength="100" name="picture" value="{{item.picture}}">
+                </div>
+            </div>
+
+            <div>
+                <label for="category">Category:</label>
+                <div>
+                    <select name="category">
+                    {% for c in categories %}
+                        <option value="{{c.name}}" {% if c == item.category %} selected {% endif %}>{{c.name}}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <div></div>
+                <div>
+                    <button type="submit" id="submit" type="submit">Save</button>
+
+                    <a href="{{url_for('showCategory', category_name=item.category.name)}}">
+                        <button type="button">Cancel</button>
+                    </a>
+                </div>
+            </div>
+        </form>
+
+{% endblock %}

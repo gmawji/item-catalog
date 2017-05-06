@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 
-        <h1>Add Item</h1>
+        <h1>Add Category Item</h1>
 
-        <form action="{{url_for('addItem')}}" method = "post">
+        <form action="{{url_for('addCategoryItem', category_name = category.name)}}" method = "post">
             <div>
                 <label for="name">Name:</label>
                 <div>
@@ -14,7 +14,7 @@
             <div>
                 <label for="description">Description:</label>
                 <div>
-                    <textarea maxlength="250" rows="3" name="description" placeholder"Description Here!"></textarea>
+                    <textarea maxlength="250" rows="3" name="description" placeholder="Description Here!"></textarea>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
                 <div>
                     <select name="category">
                     {% for c in categories %}
-                        <option value="{{c.name}}">{{c.name}}</option>
+                        <option value="{{c.name}}" {% if c == category %} selected {% endif %}>{{c.name}}</option>
                     {% endfor %}
                     </select>
                 </div>
@@ -41,7 +41,7 @@
                 <div>
                     <button type="submit" id="submit" type="submit">Save</button>
 
-                    <a href="{{url_for('showCatalog')}}">
+                    <a href="{{url_for('showCategory', category_name=category.name)}}">
                         <button type="button">Cancel</button>
                     </a>
                 </div>

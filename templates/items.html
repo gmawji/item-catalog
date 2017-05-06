@@ -3,16 +3,17 @@
 
 <h1>Categories</h1>
 {% for c in categories %}
-    <a href="#"">
+    <a href="{{url_for('showCategory', category_name = c.name,)}}"">
         {{ c.name }}
     </a>
 {% endfor %}
 
 <h1>Items ({{count}})</h1>
-{% for item in items %}
-    <a href = "#">
-    {{ item.name }}
+{% for i in items %}
+    <a href = "{{url_for('showItem', category_name = i.category.name, item_name = i.name)}}">
+    {{ i.name }}
     </a>
 {% endfor %}
-
+<hr>
+<a href="{{url_for('addCategoryItem', category_name = category)}}" class="btn btn-default">Add Item</a>
 {% endblock %}

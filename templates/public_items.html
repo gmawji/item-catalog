@@ -3,14 +3,14 @@
 
 <h1>Categories</h1>
 {% for c in categories %}
-    <a href="#"">
+    <a href="{{url_for('showCategory', category_name = c.name,)}}"">
         {{ c.name }}
     </a>
 {% endfor %}
 
 <h1>Items ({{count}})</h1>
 {% for i in items %}
-    <a href = "#">
+    <a href = "{{url_for('showItem', category_name = i.category.name, item_name = i.name)}}">
     {{ i.name }}
     </a>
 {% endfor %}

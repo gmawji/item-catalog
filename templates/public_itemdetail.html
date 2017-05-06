@@ -3,7 +3,7 @@
 
 <h1>Categories</h1>
 {% for c in categories %}
-    <a href="#"">
+    <a href="{{url_for('showCategory', category_name = c.name,)}}"">
         {{ c.name }}
     </a>
 {% endfor %}
