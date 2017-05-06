@@ -92,6 +92,43 @@ def editItem():
 def deleteItem():
     return "This page will delete an item"
 
+#===================
+# JSON
+#===================
+@app.route('/catalog/JSON')
+def allItemsJSON():
+    categories = session.query(Category).all()
+    category_dict = [c.serialize for c in categories]
+    for c in range(len(category_dict)):
+        items = [i.serialize for i in session.query(Items)\
+                    .filter_by(category_id=category_dict[c]["id"]).all()]
+        if items:
+            category_dict[c]["Item"] = items
+    return jsonify(Category=category_dict)
+
+@app.route('/catalog/categories/JSON')
+def categoriesJSON():
+    categories = session.query(Category).all()
+    return jsonify(categories=[c.serialize for c in categories])
+
+@app.route('/catalog/items/JSON')
+def itemsJSON():
+    items = session.query(Items).all()
+    return jsonify(items=[i.serialize for i in items])
+
+@app.route('/catalog/<category_name>/JSON')
+def categoryItemsJSON(category_name):
+    category = session.query(Category).filter_by(name=category_name).one()
+    items = session.query(Items).filter_by(category=category).all()
+    return jsonify(items=[i.serialize for i in items])
+
+@app.route('/catalog/<category_name>/<item_name>/JSON')
+def ItemJSON(category_name, item_name):
+    category = session.query(Category).filter_by(name=category_name).one()
+    item = session.query(Items).filter_by(name=item_name,\
+                                        category=category).one()
+    return jsonify(item=[item.serialize])
+
 
 # url_for static path processor
 # remove when deployed
