@@ -141,9 +141,21 @@ def editItem(category_name, item_name):
                                 categories=categories)
 
 # Delete an item
-@app.route('/catalog/<int:category_name>/<int:item_name>/delete', methods=['GET', 'POST'])
-def deleteItem():
-    return "This page will delete an item"
+@app.route('/catalog/<category_name>/<item_name>/delete', methods=['GET', 'POST'])
+def deleteItem(category_name, item_name):
+    itemToDelete = session.query(Items).filter_by(name=item_name).one()
+    category = session.query(Category).filter_by(name=category_name).one()
+    categories = session.query(Category).all()
+    if request.method =='POST':
+        session.delete(itemToDelete)
+        session.commit()
+        flash('Item Successfully Deleted! '+itemToDelete.name)
+        return redirect(url_for('showCategory',
+                                category_name=category.name))
+    else:
+        return render_template('deleteitem.html',
+                                item=itemToDelete)
+
 
 #===================
 # JSON
