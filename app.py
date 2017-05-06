@@ -42,7 +42,7 @@ session = DBSession()
 def showCatalog():
     categories = session.query(Category).order_by(asc(Category.name))
     items = session.query(Items).order_by(desc(Items.date)).limit(5)
-    return render_template('public_catalog.html',
+    return render_template('catalog.html',
                             categories = categories,
                             items = items)
 
@@ -55,19 +55,18 @@ def showCategory(category_name):
     items = session.query(Items).filter_by(category=category).order_by(asc(Items.name)).all()
     print items
     count = session.query(Items).filter_by(category=category).count()
-    return render_template('public_items.html',
+    return render_template('items.html',
                             category = category.name,
                             categories = categories,
                             items = items,
                             count = count)
 
 # Display a Specific Item
-@app.route('/<category_name>/<item_name>/')
 @app.route('/catalog/<category_name>/<item_name>/')
 def showItem(category_name, item_name):
     item = session.query(Items).filter_by(name=item_name).one()
     categories = session.query(Category).all()
-    return render_template('public_itemdetail.html',
+    return render_template('itemdetail.html',
                             item = item,
                             category = category_name,
                             categories = categories)
