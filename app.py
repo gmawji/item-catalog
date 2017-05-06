@@ -46,6 +46,22 @@ def showCatalog():
                             categories = categories,
                             items = items)
 
+# Category Items
+@app.route('/<category_name>/items/')
+@app.route('/catalog/<category_name>/items/')
+def showCategory(category_name):
+    categories = session.query(Category).order_by(asc(Category.name))
+    category = session.query(Category).filter_by(name=category_name).one()
+    items = session.query(Items).filter_by(name=category_name)\
+                                .order_by(asc(Items.name))
+    print items
+    count = session.query(Items).filter_by(category=category).count()
+    return render_template('public_items.html',
+                            category = category.name,
+                            categories = categories,
+                            items = items,
+                            count = count)
+
 
 # url_for static path processor
 # remove when deployed
