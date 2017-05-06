@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Categories</h1>
+{% for c in categories %}
+    <a href="#"">
+        {{ c.name }}
+    </a>
+{% endfor %}
+
+<h1>{{ item.name }}</h1>
+<p>{{ item.description }}</p>
+<img src="{{ item.picture }}" alt="{{ item.name }}">
+
+
+{% endblock %}

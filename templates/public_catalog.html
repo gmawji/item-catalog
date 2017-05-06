@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Catalog{% endblock title %}
+
+{% block content %}
+Public
+<h1>Categories</h1>
+{% for c in categories %}
+    <a href="#"">
+        {{ c.name }}
+    </a>
+{% endfor %}
+
+<h1>Latest Items</h1>
+{% for item in items %}
+    <a href="#">
+        {{ item.name }}
+        ({{ item.category.name }})
+        <p>Last update: {{ item.date.strftime("%-d-%b-%Y at %I:%M %p") }}</p>
+    </a>
+{% endfor %}
+
+{% endblock %}

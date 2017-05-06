@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Categories</h1>
+{% for c in categories %}
+    <a href="#"">
+        {{ c.name }}
+    </a>
+{% endfor %}
+
+<h1>Items ({{count}})</h1>
+{% for item in items %}
+    <a href = "#">
+    {{ item.name }}
+    </a>
+{% endfor %}
+
+{% endblock %}
