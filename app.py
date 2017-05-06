@@ -75,7 +75,21 @@ def showItem(category_name, item_name):
 # Add an item
 @app.route('/catalog/add', methods=['GET', 'POST'])
 def addItem():
-    return "This page will add an item"
+    categories = session.query(Category).all()
+    if request.method == 'POST':
+        newItem = Items(
+            name=request.form['name'],
+            description=request.form['description'],
+            picture=request.form['picture'],
+            category=session.query(Category).filter_by(name=request.form['category']).one(),
+            date=datetime.datetime.now())
+        session.add(newItem)
+        session.commit()
+        flash('Item Successfully Added!')
+        return redirect(url_for('showCatalog'))
+    else:
+        return render_template('additem.html',
+                                categories=categories)
 
 # Add an item to a Category
 @app.route('/catalog/<category_name>/items/add', methods=['GET', 'POST'])
