@@ -16,4 +16,5 @@
 {% endfor %}
 <hr>
 <a href="{{url_for('addCategoryItem', category_name = category)}}" class="btn btn-default">Add Item</a>
+<a href="{{url_for('deleteCategory', category_name = category)}}" class="btn btn-default">Delete Category</a>
 {% endblock %}
