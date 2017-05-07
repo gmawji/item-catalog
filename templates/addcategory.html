@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+        <h1>Add Item</h1>
+
+        <form action="{{url_for('addCategory')}}" method = "post">
+            <div>
+                <label for="name">Name:</label>
+                <div>
+                    <input type ="text" maxlength="100" name="name" placeholder="Category Name Here!">
+                </div>
+            </div>
+
+            <div>
+                <div></div>
+                <div>
+                    <button type="submit" id="submit" type="submit">Save</button>
+
+                    <a href="{{url_for('showCatalog')}}">
+                        <button type="button">Cancel</button>
+                    </a>
+                </div>
+            </div>
+        </form>
+
+{% endblock %}
