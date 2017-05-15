@@ -5,27 +5,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>{% block title %}{% endblock title %}</title>
 
-  <!--Bootstrap 3.3.7-->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <!--Styles-->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   <!--Google Sign In-->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-  <script src="//apis.google.com/js/platform.js?onload=start"> </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js?onload=start"> </script>
 
   {% block head %}{% endblock head %}
 </head>
 <body>
 
+    <div class="border-site bs-top"></div>
+    <div class="border-site bs-right"></div>
+    <div class="border-site bs-left"></div>
+    <div class="border-site bs-bottom"></div>
+
     {% block content %}
     {% endblock content %}
 
-    <!--JQuery-->
-    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-    <!--Boostrap JS-->
+    <!--bootstrap.js-->
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <!--retina.js-->
     <script src="{{ url_for('static', filename='js/retina.min.js') }}"></script>
-
-    <script>
+    <!--Google Login-->
+    <!--<script>
     function signInCallback(authResult) {
       if (authResult['code']) {
         //Hide the sign-in button once the user is authorized
@@ -54,6 +59,6 @@
         });
       }
     }
-    </script>
+    </script>-->
 </body>
 </html>
