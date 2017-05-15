@@ -185,8 +185,10 @@ def gdisconnect():
         del login_session['email']
         del login_session['picture']
 
-        response = make_response(json.dumps('Successfully disconnected.'), 200)
-        response.headers['Content-Type'] = 'application/json'
+        # response = make_response(json.dumps('Successfully disconnected.'), 200)
+        # response.headers['Content-Type'] = 'application/json'
+        response = redirect(url_for('showCatalog'))
+        flash("You are now logged out.")
         return response
     else:
         # For whatever reason, the given token was invalid.
@@ -216,21 +218,37 @@ def showCategory(category_name):
     items = session.query(Items).filter_by(category=category).order_by(asc(Items.name)).all()
     print items
     count = session.query(Items).filter_by(category=category).count()
-    return render_template('items.html',
-                            category = category.name,
-                            categories = categories,
-                            items = items,
-                            count = count)
+    if 'username' not in login_session:
+        return render_template('public_items.html',
+                                category = category.name,
+                                categories = categories,
+                                items = items,
+                                count = count)
+    else:
+        return render_template('items.html',
+                                category = category.name,
+                                categories = categories,
+                                items = items,
+                                count = count)
 
 # Display a Specific Item
 @app.route('/catalog/<category_name>/<item_name>/')
 def showItem(category_name, item_name):
     item = session.query(Items).filter_by(name=item_name).one()
+    creator = getUserInfo(item.user_id)
     categories = session.query(Category).all()
-    return render_template('itemdetail.html',
-                            item = item,
-                            category = category_name,
-                            categories = categories)
+    if 'username' not in login_session or creator.id != login_session['user_id']:
+        return render_template('public_itemdetail.html',
+                                item = item,
+                                category = category_name,
+                                categories = categories,
+                                creator = creator)
+    else:
+        return render_template('itemdetail.html',
+                                item = item,
+                                category = category_name,
+                                categories = categories,
+                                creator = creator)
 
 # Add a category
 @app.route('/catalog/addcategory', methods=['GET', 'POST'])
