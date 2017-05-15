@@ -1,18 +1,38 @@
 {% extends "base.html" %}
+
+{% block title %}Category Items{% endblock title %}
+
 {% block content %}
+{% include "nav.html" %}
 
-<h1>Categories</h1>
-{% for c in categories %}
-    <a href="{{url_for('showCategory', category_name = c.name,)}}"">
-        {{ c.name }}
-    </a>
-{% endfor %}
+<!-- Page Content -->
+<section id="showItem" class="section">
 
-<h1>Items ({{count}})</h1>
-{% for i in items %}
-    <a href = "{{url_for('showItem', category_name = i.category.name, item_name = i.name)}}">
-    {{ i.name }}
-    </a>
-{% endfor %}
+    <div class="container">
+
+        <div class="row">
+
+            {% include "categories.html" %}
+
+            <div class="col-md-9">
+                <h6 class="padding-bottom-26">Items (<strong>{{count}}</strong>)</h6>
+                {% for i in items %}
+                <div class="thumbnail text-center">
+                    <div class="caption-full">
+                        <img class="img-responsive img-center" src="{{ i.picture }}" alt="{{ i.name }}">
+                    </div>
+                    <a href = "{{url_for('showItem', category_name = i.category.name, item_name = i.name)}}">
+                        <h4>{{ i.name }}</h4>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /.section -->
 
 {% endblock %}
