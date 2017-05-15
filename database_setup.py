@@ -37,9 +37,6 @@ class Items(Base):
     date = Column(DateTime, nullable=False)
     description = Column(String(250))
     picture = Column(String(250))
-    # Try to use a category with the backref to find all items associated
-    # with that category
-    # (session.query(Category, Items).join(Category.items).all()
     category_id = Column(Integer, ForeignKey('category.id'))
     category = relationship(Category, backref="items")
     user_id = Column(Integer, ForeignKey('user.id'))
