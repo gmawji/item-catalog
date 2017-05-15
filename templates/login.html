@@ -1,19 +1,50 @@
 {% extends "base.html" %}
-{% block head %}
-{% endblock head %}
+
+{% block title %}Login{% endblock title %}
+
 {% block content %}
-<!--gplus signin-->
-<div id="signInButton">
-  <span class="g-signin"
-    data-scope="openid email"
-    data-clientid="INSERT_CLIENT_ID"
-    data-redirecturi="postmessage"
-    data-accesstype="offline"
-    data-cookiepolicy="single_host_origin"
-    data-callback="signInCallback"
-    data-approvalprompt="force">
-  </span>
-</div>
-<div id="result"></div>
-<!--/gplus signin-->
+{% include "nav.html" %}
+
+{% if 'username' not in session %}
+<section id="login" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Login</h1>
+            </div>
+        </div>
+
+        <div class="row padding-top-20">
+            <div class="container">
+                <!--gplus signin-->
+                <div id="signInButton">
+                  <span class="g-signin"
+                    data-scope="openid email"
+                    data-clientid="130281853059-t46sjencht4985ja2uoje633gssoao6t.apps.googleusercontent.com"
+                    data-redirecturi="postmessage"
+                    data-accesstype="offline"
+                    data-cookiepolicy="single_host_origin"
+                    data-callback="signInCallback"
+                    data-approvalprompt="force">
+                  </span>
+                </div>
+                <!--/gplus signin-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="login-success" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <div id="result"></div>
+            </div>
+        </div>
+    </div>
+</section>
+{% else %}
+{% endif %}
+
+
 {% endblock %}
