@@ -1,19 +1,21 @@
 {% extends "base.html" %}
+{% include "nav.html" %}
 {% block content %}
 
-        <h1>Delete Item</h1>
-        <h2>Are you sure you want to delete {{category.name}}?</h2>
+<section id="deleteCategory" class="section">
+    <div class="section-content container padding-1-5">
+        <h1>Delete Category</h1>
+        <p class="padding-top-10">Are you sure you want to delete the category {{category.name}}?</p>
 
-        <form action="{{url_for('deleteCategory', category_name = category.name)}}" method = "post">
-            <div>
-                <div>
-                    <button type="submit" id="submit" type="submit">Delete</button>
-
-                    <a href="{{url_for('showCategory', category_name=category.name)}}">
-                        <button type="button">Cancel</button>
-                    </a>
-                </div>
+        <form action="{{url_for('deleteCategory', category_name = category.name)}}" method = "post" class="padding-top-10">
+            <div class="form-group">
+                <button type="submit" id="submit" class="btn btn-danger">Delete</button>
+                <a href="{{url_for('showCategory', category_name = category.name)}}">
+                    <button type="button" class="btn btn-default">Cancel</button>
+                </a>
             </div>
         </form>
+    </div>
+</section>
 
 {% endblock %}
