@@ -11,25 +11,31 @@
       <a class="navbar-brand" href="{{url_for('showCatalog')}}">
         <img class="brand-img" src="{{ url_for('static', filename='img/logo.png') }}" alt="Item Catalog Logo">
       </a>
+      {% if 'username' not in session %}
+      <a href="{{url_for('showLogin')}}" class="navbar-text navbar-margin-btn">
+        <button type="button" class="btn btn-default navbar-btn">
+        Log In
+        </button>
+      </a>
+      {% else %}
+      <a href="{{url_for('gdisconnect')}}" class="navbar-text navbar-margin-btn">
+        <button type="button" class="btn btn-default navbar-btn">
+        Logout
+        </button>
+      </a>
+      {% endif %}
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <button type="button" class="btn btn-default navbar-btn">Login</button>
+
+      {% if 'username' not in session %}
+      {% else %}
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{url_for('addItem')}}">Add Item</a></li>
         <li><a href="{{url_for('addCategory')}}">Add Category</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
       </ul>
+      {% endif %}
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
