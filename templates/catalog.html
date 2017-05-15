@@ -3,24 +3,38 @@
 {% block title %}Catalog{% endblock title %}
 
 {% block content %}
-<h1>Categories</h1>
-{% for c in categories %}
-    <a href="{{url_for('showCategory', category_name = c.name,)}}"">
-        {{ c.name }}
-    </a>
-{% endfor %}
+{% include "nav.html" %}
+{% include "flash.html" %}
 
-<h1>Latest Items</h1>
-{% for item in items %}
-    <a href="{{url_for('showItem', category_name = item.category.name, item_name = item.name)}}">
-        {{ item.name }}
-        ({{ item.category.name }})
-        <p>Last update: {{ item.date.strftime("%-d-%b-%Y at %I:%M %p") }}</p>
-    </a>
-{% endfor %}
+<!-- Page Content -->
+<section id="catalog" class="section">
 
-<hr>
-<a href="{{url_for('addItem')}}" class="btn btn-default">Add Item</a>
-<a href="{{url_for('addCategory')}}" class="btn btn-default">Add Category</a>
+    <div class="container">
 
+        <div class="row">
+
+            {% include "categories.html" %}
+
+            <div class="col-md-9">
+                <h4 class="padding-bottom-19">Latest Items</h4>
+                {% for i in items %}
+                <div class="thumbnail">
+                    <div class="caption-full">
+                        <img class="img-responsive img-center" src="{{ i.picture }}" alt="{{ i.name }}">
+                    </div>
+                    <a href = "{{url_for('showItem', category_name = i.category.name, item_name = i.name)}}">
+                        <h4>{{ i.name }}</h4>
+                        <h6 class="pull-right">Last update: {{ i.date.strftime("%-d-%b-%Y at %I:%M %p") }}</h6>
+                        <h6>({{ i.category.name }})</h6>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /.section -->
 {% endblock %}
