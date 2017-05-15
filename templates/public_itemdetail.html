@@ -1,16 +1,38 @@
 {% extends "base.html" %}
+
+{% block title %}{{ item.name }}{% endblock title %}
+
 {% block content %}
+{% include "nav.html" %}
+{% include "flash.html" %}
 
-<h1>Categories</h1>
-{% for c in categories %}
-    <a href="{{url_for('showCategory', category_name = c.name,)}}"">
-        {{ c.name }}
-    </a>
-{% endfor %}
+<!-- Page Content -->
+<section id="itemDetail" class="section">
 
-<h1>{{ item.name }}</h1>
-<p>{{ item.description }}</p>
-<img src="{{ item.picture }}" alt="{{ item.name }}">
+    <div class="container">
 
+        <div class="row">
+
+            {% include "categories.html" %}
+
+            <div class="col-md-9">
+
+                <div class="thumbnail">
+                    <img class="img-responsive" src="{{ item.picture }}" alt="{{ item.name }}">
+                    <div class="caption-full">
+                        <h4>{{ item.name }}</h4>
+                        <p>{{ item.description }}</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+<!-- /.section -->
 
 {% endblock %}
