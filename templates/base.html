@@ -34,7 +34,7 @@
     function signInCallback(authResult) {
       if (authResult['code']) {
         //Hide the sign-in button once the user is authorized
-        $('#signinButton').attr('style','display:none');
+        $('#login').attr('style','display:none');
         // Send one-time-use code to the server, if server responds,
         // write a 'login successful' message to the web page and then
         // redirect back to the main restaurants page
@@ -49,7 +49,7 @@
             if (result) {
               $('#result').html('Login Successful!</br>'+ result + '</br>Redirecting...');
               setTimeout(function() {
-                window.location.href = "/restaurant";
+                window.location.href = "/catalog";
               }, 4000);
             } else if (authResult['error']) {
               console.log('There was an error: ' + authResult['error']);
