@@ -521,6 +521,9 @@ h6 {
 .padding-top-10 {
   padding-top: 10px;
 }
+.padding-top-20 {
+  padding-top: 20px;
+}
 .padding-bottom-19 {
   padding-bottom: 19px;
 }
@@ -939,12 +942,15 @@ h6 {
 \*------------------------------------*/
 
 .navbar-brand {
-    padding: 5px 10px;
+  padding: 5px 10px;
 }
 .brand-img {
-    width: 39px;
+  width: 39px;
 }
 
+.navbar-margin-btn {
+  margin: 0 0 0 0;
+}
 
 /*------------------------------------*\
     12. Section-Catalog
