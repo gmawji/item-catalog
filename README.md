@@ -27,7 +27,7 @@ This web app is a project for the Udacity FSND Course.
 9. Run application using `python /item-catalog/app.py`
 10. Access the application locally using http://localhost:5000
 
-* Optional step(s)
+*Optional step(s)
 
 ## Using Google Login
 To get the Google login working there are a few additional steps:
