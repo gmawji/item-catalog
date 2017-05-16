@@ -9,6 +9,9 @@ This web app is a project for the Udacity FSND Course.
 5. Flask Framework
 
 # Installation
+There are some dependancies and a few instructions on how to run the application.
+Seperate instructions are provided to get GConnect working also.
+
 ## Dependencies
 - [Vagrant](https://www.vagrantup.com/)
 - [Udacity Vagrantfile](https://github.com/udacity/fullstack-nanodegree-vm)
