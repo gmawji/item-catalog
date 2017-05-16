@@ -408,7 +408,7 @@ def itemsJSON():
     items = session.query(Items).all()
     return jsonify(items=[i.serialize for i in items])
 
-@app.route('/catalog/<category_name>/JSON')
+@app.route('/catalog/<category_name>/items/JSON')
 def categoryItemsJSON(category_name):
     category = session.query(Category).filter_by(name=category_name).one()
     items = session.query(Items).filter_by(category=category).all()
