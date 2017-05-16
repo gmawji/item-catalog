@@ -22,6 +22,8 @@ session = DBSession()
 session.query(Category).delete()
 # Delete Items if exisitng.
 session.query(Items).delete()
+# Delete Users if exisitng.
+session.query(User).delete()
 
 # Create fake users
 User1 = User(name="Nada Baynom",
@@ -33,25 +35,25 @@ session.commit()
 User2 = User(name="Renado Gress",
               email="rgress1@t.co",
               picture='http://dummyimage.com/200x200.png/cc0000/ffffff')
-session.add(User1)
+session.add(User2)
 session.commit()
 
 User3 = User(name="Prinz Blakemore",
               email="pblakemore2@bluehost.com",
               picture='http://dummyimage.com/200x200.png/5fa2dd/ffffff')
-session.add(User1)
+session.add(User3)
 session.commit()
 
 User4 = User(name="Ev Beetham",
               email="ebeetham3@google.com.au",
               picture='http://dummyimage.com/200x200.png/ff4444/ffffff')
-session.add(User1)
+session.add(User4)
 session.commit()
 
 User5 = User(name="Tamra Eyree",
               email="teyree4@wix.com",
               picture='http://dummyimage.com/200x200.png/cc0000/ffffff')
-session.add(User1)
+session.add(User5)
 session.commit()
 
 # Create fake categories
