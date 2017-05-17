@@ -460,7 +460,17 @@ h6 {
 }
 
 .alert-info {
-  margin-top: 51px;
+  margin-top: 70px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+@media (max-width: 991px) {
+    .alert-info {
+      margin-top: 50px;
+      margin-left: 0;
+      margin-right: 0;
+    }
 }
 
 
