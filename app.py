@@ -300,27 +300,6 @@ def addItem():
         return render_template('additem.html',
                                 categories=categories)
 
-# Add an item to a Category
-# @app.route('/catalog/<category_name>/items/add', methods=['GET', 'POST'])
-# def addCategoryItem(category_name):
-#     category = session.query(Category).filter_by(name=category_name).one()
-#     categories = session.query(Category).all()
-#     if request.method == 'POST':
-#         newItem = Items(
-#             name=request.form['name'],
-#             description=request.form['description'],
-#             picture=request.form['picture'],
-#             category=session.query(Category).filter_by(name=request.form['category']).one(),
-#             date=datetime.datetime.now())
-#         session.add(newItem)
-#         session.commit()
-#         flash('Category Item Successfully Added!')
-#         return redirect(url_for('showCategory', category_name=category.name))
-#     else:
-#         return render_template('addcategoryitem.html',
-#                                 category=category,
-#                                 categories=categories)
-
 # Edit an item
 @app.route('/catalog/<category_name>/<item_name>/edit', methods=['GET', 'POST'])
 def editItem(category_name, item_name):
