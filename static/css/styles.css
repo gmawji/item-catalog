@@ -6,16 +6,19 @@
 
 /**
 *    Table of Contents:
-*        01. Reset
-*        02. Typography
-*        03. Background
-*        04. Margin
-*        05. Padding
-*        06. Border
-*        07. Custom
+*    01. Reset
+*    02. Typography
+*    03. Padding
+*    04. Border
+*    05. Background grid
+*    06. Border site
+*    07. Section
+*    08. Navigation
+*    09. Section-Catalog
+*    10. Section-ShowItem
+*    11. Section-Items
 **/
 
-@import url('https://fonts.googleapis.com/css?family=Bree+Serif|Lora:400,400i,700');
 
 /*------------------------------------*\
     01. Reset
@@ -163,338 +166,11 @@ h6 {
   line-height: 23px;
 }
 
-/*------------------------------------*\
-    03. Background
-\*------------------------------------*/
-
-.background-cover {
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden;
-}
-.background-fix {
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-@media (min-width: 992px) {
-  .background-fix {
-    background-attachment: fixed;
-  }
-}
-.background-position-center {
-  background-position: center center !important;
-}
-.background-position-top {
-  background-position: center    top !important;
-}
-.background-position-right {
-  background-position: right  center !important;
-}
-.background-position-right-top {
-  background-position: right     top !important;
-}
-.background-position-right-bottom {
-  background-position: right  bottom !important;
-}
-.background-position-bottom {
-  background-position: center bottom !important;
-}
-.background-position-left {
-  background-position: left   center !important;
-}
-.background-position-left-top {
-  background-position: left      top !important;
-}
-.background-position-left-bottom {
-  background-position: left   bottom !important;
-}
-
-
-/**
-* Background color
-*/
-
-.background-black {
-  background-color: #292627 !important;
-}
-.background-gray {
-  background-color: #eaeaea !important;
-}
-.background-gray-dark {
-  background-color: #dad9da !important;
-}
-.background-gray-dark-2 {
-  background-color: #c2c0c1 !important;
-}
-.background-gray-light {
-  background-color: #f2f2f2 !important;
-}
-.background-gray-light-2 {
-  background-color: #f7f8f8 !important;
-}
-.background-white {
-  background-color: #fdfdfd !important;
-}
-.background-color {
-  background-color: #00c775 !important;
-}
 
 /*------------------------------------*\
-    04. Margin
+    03. Padding
 \*------------------------------------*/
 
-.margin-0-5 {
-  margin: 0.5% !important;
-}
-.margin-1 {
-  margin: 1% !important;
-}
-.margin-1-5 {
-  margin: 1.5% !important;
-}
-.margin-2 {
-  margin: 2% !important;
-}
-.margin-2-5 {
-  margin: 2.5% !important;
-}
-.margin-3 {
-  margin: 3% !important;
-}
-.margin-3-5 {
-  margin: 3.5% !important;
-}
-.margin-4 {
-  margin: 4% !important;
-}
-.margin-4-5 {
-  margin: 4.5% !important;
-}
-.margin-5 {
-  margin: 5% !important;
-}
-.margin-5-5 {
-  margin: 5.5% !important;
-}
-.margin-6 {
-  margin: 6% !important;
-}
-.margin-6-5 {
-  margin: 6.5% !important;
-}
-.margin-7 {
-  margin: 7% !important;
-}
-.margin-7-5 {
-  margin: 7.5% !important;
-}
-.margin-8 {
-  margin: 8% !important;
-}
-.margin-8-5 {
-  margin: 8.5% !important;
-}
-.margin-9 {
-  margin: 9% !important;
-}
-.margin-9-5 {
-  margin: 9.5% !important;
-}
-.margin-10 {
-  margin: 10% !important;
-}
-.margin-10-5 {
-  margin: 10.5% !important;
-}
-.margin-11 {
-  margin: 11% !important;
-}
-.margin-11-5 {
-  margin: 11.5% !important;
-}
-.margin-12 {
-  margin: 12% !important;
-}
-.margin-12-5 {
-  margin: 12.5% !important;
-}
-.margin-13 {
-  margin: 13% !important;
-}
-.margin-13-5 {
-  margin: 13.5% !important;
-}
-.margin-14 {
-  margin: 14% !important;
-}
-.margin-14-5 {
-  margin: 14.5% !important;
-}
-.margin-15 {
-  margin: 15% !important;
-}
-.margin-15-5 {
-  margin: 15.5% !important;
-}
-.margin-16 {
-  margin: 16% !important;
-}
-.margin-16-5 {
-  margin: 16.5% !important;
-}
-.margin-17 {
-  margin: 17% !important;
-}
-.margin-17-5 {
-  margin: 17.5% !important;
-}
-.margin-18 {
-  margin: 18% !important;
-}
-.margin-rl-auto {
-  margin-right: auto !important;
-  margin-left: auto !important;
-}
-.no-margin {
-  margin: 0 !important;
-}
-.no-margin-top {
-  margin-top: 0 !important;
-}
-.no-margin-right {
-  margin-right: 0 !important;
-}
-.no-margin-bottom {
-  margin-bottom: 0 !important;
-}
-.no-margin-left {
-  margin-left: 0 !important;
-}
-.no-margin-tb {
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-.no-margin-rl {
-  margin-right: 0 !important;
-  margin-left: 0 !important;
-}
-
-
-
-
-
-/*------------------------------------*\
-    05. Padding
-\*------------------------------------*/
-
-.padding-0-5 {
-  padding: 0.5% !important;
-}
-.padding-1 {
-  padding: 1% !important;
-}
-.padding-1-5 {
-  padding: 1.5% !important;
-}
-.padding-2 {
-  padding: 2% !important;
-}
-.padding-2-5 {
-  padding: 2.5% !important;
-}
-.padding-3 {
-  padding: 3% !important;
-}
-.padding-3-5 {
-  padding: 3.5% !important;
-}
-.padding-4 {
-  padding: 4% !important;
-}
-.padding-4-5 {
-  padding: 4.5% !important;
-}
-.padding-5 {
-  padding: 5% !important;
-}
-.padding-5-5 {
-  padding: 5.5% !important;
-}
-.padding-6 {
-  padding: 6% !important;
-}
-.padding-6-5 {
-  padding: 6.5% !important;
-}
-.padding-7 {
-  padding: 7% !important;
-}
-.padding-7-5 {
-  padding: 7.5% !important;
-}
-.padding-8 {
-  padding: 8% !important;
-}
-.padding-8-5 {
-  padding: 8.5% !important;
-}
-.padding-9 {
-  padding: 9% !important;
-}
-.padding-9-5 {
-  padding: 9.5% !important;
-}
-.padding-10 {
-  padding: 10% !important;
-}
-.padding-10-5 {
-  padding: 10.5% !important;
-}
-.padding-11 {
-  padding: 11% !important;
-}
-.padding-11-5 {
-  padding: 11.5% !important;
-}
-.padding-12 {
-  padding: 12% !important;
-}
-.padding-12-5 {
-  padding: 12.5% !important;
-}
-.padding-13 {
-  padding: 13% !important;
-}
-.padding-13-5 {
-  padding: 13.5% !important;
-}
-.padding-14 {
-  padding: 14% !important;
-}
-.padding-14-5 {
-  padding: 14.5% !important;
-}
-.padding-15 {
-  padding: 15% !important;
-}
-.padding-15-5 {
-  padding: 15.5% !important;
-}
-.padding-16 {
-  padding: 16% !important;
-}
-.padding-16-5 {
-  padding: 16.5% !important;
-}
-.padding-17 {
-  padding: 17% !important;
-}
-.padding-17-5 {
-  padding: 17.5% !important;
-}
-.padding-18 {
-  padding: 18% !important;
-}
 .no-padding {
   padding: 0 !important;
 }
@@ -537,10 +213,10 @@ h6 {
   padding-left: 10px;
 }
 
-/*------------------------------------*\
-    06. Border
-\*------------------------------------*/
 
+/*------------------------------------*\
+    04. Border
+\*------------------------------------*/
 
 .no-border {
   border: none !important;
@@ -575,249 +251,9 @@ h6 {
   border-radius: 3px !important;
 }
 
-/*------------------------------------*\
-   07. Custom
-\*------------------------------------*/
-
-/**
-* Display
-*/
-
-.display-block {
-  display: block !important;
-}
-.display-inherit {
-  display: inherit !important;
-}
-.display-inline {
-  display: inline !important;
-}
-.display-inline-block {
-  display: inline-block !important;
-}
-.display-none {
-  display: none !important;
-}
-.display-table {
-  display: table !important;
-}
-.display-table-cell {
-  display: table-cell !important;
-}
-
-
-/**
-* Position
-*/
-
-.position-absolute {
-  position: absolute !important;
-}
-.position-fixed {
-  position: fixed !important;
-}
-.position-relative {
-  position: relative !important;
-}
-.position-top {
-  top: 0 !important;
-}
-.position-right {
-  right: 0 !important;
-}
-.position-bottom {
-  bottom: 0 !important;
-}
-.position-left {
-  left: 0 !important;
-}
-
-
-/**
-* Top
-*/
-
-.top-1 {
-  top: 1px !important;
-}
-.top-2 {
-  top: 2px !important;
-}
-.top-3 {
-  top: 3px !important;
-}
-.top-4 {
-  top: 4px !important;
-}
-.top-5 {
-  top: 5px !important;
-}
-.top-6 {
-  top: 6px !important;
-}
-.top-7 {
-  top: 7px !important;
-}
-.top-8 {
-  top: 8px !important;
-}
-.top-9 {
-  top: 9px !important;
-}
-.top-10 {
-  top: 10px !important;
-}
-.top-minus-1 {
-  top: -1px !important;
-}
-.top-minus-2 {
-  top: -2px !important;
-}
-.top-minus-3 {
-  top: -3px !important;
-}
-.top-minus-4 {
-  top: -4px !important;
-}
-.top-minus-5 {
-  top: -5px !important;
-}
-.top-minus-6 {
-  top: -6px !important;
-}
-.top-minus-7 {
-  top: -7px !important;
-}
-.top-minus-8 {
-  top: -8px !important;
-}
-.top-minus-9 {
-  top: -9px !important;
-}
-.top-minus-10 {
-  top: -10px !important;
-}
-
-
-/**
-* Width
-*/
-
-.width-50 {
-  width: 50% !important;
-}
-.width-100 {
-  width: 100% !important;
-}
-.width-auto {
-  width: auto !important;
-}
-.min-width-100 {
-  min-width: 100%;
-}
-
-
-/**
-* Height
-*/
-
-.height-50 {
-  height: 50% !important;
-}
-.height-100 {
-  height: 100% !important;
-}
-.height-auto {
-  height: auto !important;
-}
-.min-height-100 {
-  min-height: 100%;
-}
-
-
-/**
-* Vertical align
-*/
-
-.vertical-align-top {
-  vertical-align: top !important;
-}
-.vertical-align-middle {
-  vertical-align: middle !important;
-}
-.vertical-align-bottom {
-  vertical-align: bottom !important;
-}
-
-
-/**
-* Opacity
-*/
-
-.opacity-0 {
-  opacity: 0.0 !important;
-}
-.opacity-1 {
-  opacity: 0.1 !important;
-}
-.opacity-2 {
-  opacity: 0.2 !important;
-}
-.opacity-3 {
-  opacity: 0.3 !important;
-}
-.opacity-4 {
-  opacity: 0.4 !important;
-}
-.opacity-5 {
-  opacity: 0.5 !important;
-}
-.opacity-6 {
-  opacity: 0.6 !important;
-}
-.opacity-7 {
-  opacity: 0.7 !important;
-}
-.opacity-8 {
-  opacity: 0.8 !important;
-}
-.opacity-9 {
-  opacity: 0.9 !important;
-}
-
-
-/**
-* Z-index
-*/
-
-.z-index-minus-1 {
-  z-index: -1 !important;
-}
-.z-index-0 {
-  z-index: 0 !important;
-}
-.z-index-1 {
-  z-index: 1 !important;
-}
-.z-index-1000 {
-  z-index: 1000 !important;
-}
-
-
-/**
-* Overflow
-*/
-
-.overflow-visible {
-    overflow: visible !important;
-}
-.overflow-hidden {
-    overflow: hidden !important;
-}
-
 
 /*------------------------------------*\
-    08. Background grid
+    05. Background grid
 \*------------------------------------*/
 
 .background-grid {
@@ -876,7 +312,7 @@ h6 {
 
 
 /*------------------------------------*\
-    09. Border site
+    06. Border site
 \*------------------------------------*/
 
 .border-site {
@@ -916,7 +352,7 @@ h6 {
 
 
 /*------------------------------------*\
-    10. Section
+    07. Section
 \*------------------------------------*/
 
 .section {
@@ -931,17 +367,8 @@ h6 {
   z-index: 10;
 }
 
-.vr {
-    width:1px;
-    background-color:#C6C6C6;
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:50%;
-}
-
 /*------------------------------------*\
-    11. Navigation
+    08. Navigation
 \*------------------------------------*/
 
 .navbar-brand {
@@ -956,7 +383,7 @@ h6 {
 }
 
 /*------------------------------------*\
-    12. Section-Catalog
+    09. Section-Catalog
 \*------------------------------------*/
 
 .category-list {
@@ -1039,7 +466,7 @@ h6 {
 
 
 /*------------------------------------*\
-    13. Section-ShowItem
+    10. Section-ShowItem
 \*------------------------------------*/
 
 .thumbnail .caption-full {
@@ -1048,7 +475,7 @@ h6 {
 }
 
 /*------------------------------------*\
-    14. Section-Items
+    11. Section-Items
 \*------------------------------------*/
 
 .img-center {
