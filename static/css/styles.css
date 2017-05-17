@@ -32,8 +32,7 @@ html {
 }
 body {
   background-color: #f5f5f5;
-  background-image: url("https://www.transparenttextures.com/patterns/gradient-squares.png");
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  background-image: url("../img/bright-squares.png");
   font-family: 'Lora', serif;
   font-size: 13px;
   -webkit-font-smoothing: antialiased;
