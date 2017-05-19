@@ -211,7 +211,7 @@ def showCatalog():
                             items = items)
 
 # Category Items
-@app.route('/catalog/<category_name>/items/')
+@app.route('/catalog/<path:category_name>/items/')
 def showCategory(category_name):
     categories = session.query(Category).order_by(asc(Category.name))
     category = session.query(Category).filter_by(name=category_name).one()
@@ -234,7 +234,7 @@ def showCategory(category_name):
                                 user=user)
 
 # Display a Specific Item
-@app.route('/catalog/<category_name>/<item_name>/')
+@app.route('/catalog/<path:category_name>/<path:item_name>/')
 def showItem(category_name, item_name):
     item = session.query(Items).filter_by(name=item_name).one()
     creator = getUserInfo(item.user_id)
@@ -266,7 +266,7 @@ def addCategory():
         return render_template('addcategory.html')
 
 # Delete a category
-@app.route('/catalog/<category_name>/delete', methods=['GET', 'POST'])
+@app.route('/catalog/<path:category_name>/delete', methods=['GET', 'POST'])
 def deleteCategory(category_name):
     categoryToDelete = session.query(Category).filter_by(name=category_name).one()
     if request.method =='POST':
@@ -301,7 +301,7 @@ def addItem():
                                 categories=categories)
 
 # Edit an item
-@app.route('/catalog/<category_name>/<item_name>/edit', methods=['GET', 'POST'])
+@app.route('/catalog/<path:category_name>/<path:item_name>/edit', methods=['GET', 'POST'])
 def editItem(category_name, item_name):
     if 'username' not in login_session:
         return redirect('/login')
@@ -338,7 +338,7 @@ def editItem(category_name, item_name):
                                 categories=categories)
 
 # Delete an item
-@app.route('/catalog/<category_name>/<item_name>/delete', methods=['GET', 'POST'])
+@app.route('/catalog/<path:category_name>/<path:item_name>/delete', methods=['GET', 'POST'])
 def deleteItem(category_name, item_name):
     if 'username' not in login_session:
         return redirect('/login')
@@ -387,13 +387,13 @@ def itemsJSON():
     items = session.query(Items).all()
     return jsonify(items=[i.serialize for i in items])
 
-@app.route('/catalog/<category_name>/items/JSON')
+@app.route('/catalog/<path:category_name>/items/JSON')
 def categoryItemsJSON(category_name):
     category = session.query(Category).filter_by(name=category_name).one()
     items = session.query(Items).filter_by(category=category).all()
     return jsonify(items=[i.serialize for i in items])
 
-@app.route('/catalog/<category_name>/<item_name>/JSON')
+@app.route('/catalog/<path:category_name>/<path:item_name>/JSON')
 def ItemJSON(category_name, item_name):
     category = session.query(Category).filter_by(name=category_name).one()
     item = session.query(Items).filter_by(name=item_name,\
