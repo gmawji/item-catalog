@@ -32,48 +32,53 @@ User1 = User(name="Nada Baynom",
 session.add(User1)
 session.commit()
 
-User2 = User(name="Renado Gress",
-              email="rgress1@t.co",
-              picture='http://dummyimage.com/200x200.png/cc0000/ffffff')
-session.add(User2)
-session.commit()
+## User2 = User(name="Renado Gress",
+##               email="rgress1@t.co",
+##               picture='http://dummyimage.com/200x200.png/cc0000/ffffff')
+## session.add(User2)
+## session.commit()
 
-User3 = User(name="Prinz Blakemore",
-              email="pblakemore2@bluehost.com",
-              picture='http://dummyimage.com/200x200.png/5fa2dd/ffffff')
-session.add(User3)
-session.commit()
+## User3 = User(name="Prinz Blakemore",
+##               email="pblakemore2@bluehost.com",
+##               picture='http://dummyimage.com/200x200.png/5fa2dd/ffffff')
+## session.add(User3)
+## session.commit()
 
-User4 = User(name="Ev Beetham",
-              email="ebeetham3@google.com.au",
-              picture='http://dummyimage.com/200x200.png/ff4444/ffffff')
-session.add(User4)
-session.commit()
+## User4 = User(name="Ev Beetham",
+##               email="ebeetham3@google.com.au",
+##               picture='http://dummyimage.com/200x200.png/ff4444/ffffff')
+## session.add(User4)
+## session.commit()
 
-User5 = User(name="Tamra Eyree",
-              email="teyree4@wix.com",
-              picture='http://dummyimage.com/200x200.png/cc0000/ffffff')
-session.add(User5)
-session.commit()
+## User5 = User(name="Tamra Eyree",
+##               email="teyree4@wix.com",
+##               picture='http://dummyimage.com/200x200.png/cc0000/ffffff')
+## session.add(User5)
+## session.commit()
 
 # Create fake categories
-Category1 = Category(name="Football")
+Category1 = Category(name="Football",
+                      user_id=1)
 session.add(Category1)
 session.commit()
 
-Category2 = Category(name="Cars")
+Category2 = Category(name="Cars",
+                      user_id=1)
 session.add(Category2)
 session.commit
 
-Category3 = Category(name="Snacks")
+Category3 = Category(name="Snacks",
+                      user_id=1)
 session.add(Category3)
 session.commit()
 
-Category4 = Category(name="Gadgets")
+Category4 = Category(name="Gadgets",
+                      user_id=1)
 session.add(Category4)
 session.commit()
 
-Category5 = Category(name="Food")
+Category5 = Category(name="Food",
+                      user_id=1)
 session.add(Category5)
 session.commit()
 
@@ -83,7 +88,7 @@ Item1 = Items(name="Football Boots",
                date=datetime.datetime.now(),
                description="Shoes to play football in.",
                picture="http://bit.ly/2qHbHxd",
-               category=Category1,
+               category_id=1,
                user_id=1)
 session.add(Item1)
 session.commit()
@@ -92,8 +97,8 @@ Item2 = Items(name="Football Shirt",
                date=datetime.datetime.now(),
                description="Shirt to play football in.",
                picture="http://bit.ly/2pb59qn",
-               category=Category1,
-               user_id=2)
+               category_id=1,
+               user_id=1)
 session.add(Item2)
 session.commit()
 
@@ -101,8 +106,8 @@ Item3 = Items(name="Football",
                date=datetime.datetime.now(),
                description="A Football.",
                picture="http://bit.ly/2pJSPR1",
-               category=Category1,
-               user_id=2)
+               category_id=1,
+               user_id=1)
 session.add(Item3)
 session.commit()
 
