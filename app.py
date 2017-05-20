@@ -218,7 +218,8 @@ def showCategory(category_name):
     items = session.query(Items).filter_by(category=category).order_by(asc(Items.name)).all()
     print items
     count = session.query(Items).filter_by(category=category).count()
-    if 'username' not in login_session:
+    creator = getUserInfo(category.user_id)
+    if 'username' not in login_session or creator.id != login_session['user_id']:
         return render_template('public_items.html',
                                 category = category.name,
                                 categories = categories,
