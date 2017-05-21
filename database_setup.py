@@ -21,7 +21,7 @@ class Category(Base):
     id = Column(Integer, primary_key = True)
     name = Column(String(255), nullable = False)
     user_id = Column(Integer, ForeignKey('user.id'))
-    user = relationship(User)
+    user = relationship(User, backref="category")
 
     @property
     def serialize(self):
@@ -39,8 +39,7 @@ class Items(Base):
     date = Column(DateTime, nullable=False)
     description = Column(String(250))
     picture = Column(String(250))
-    category_id = Column(Integer, ForeignKey('category.id',
-                                              ondelete='CASCADE'))
+    category_id = Column(Integer, ForeignKey('category.id'))
     category = relationship(Category, backref="items")
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User, backref="items")
