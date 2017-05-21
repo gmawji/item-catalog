@@ -39,7 +39,8 @@ class Items(Base):
     date = Column(DateTime, nullable=False)
     description = Column(String(250))
     picture = Column(String(250))
-    category_id = Column(Integer, ForeignKey('category.id'))
+    category_id = Column(Integer, ForeignKey('category.id',
+                                              ondelete='CASCADE'))
     category = relationship(Category, backref="items")
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User, backref="items")
