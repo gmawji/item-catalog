@@ -256,9 +256,13 @@ def showItem(category_name, item_name):
 # Add a category
 @app.route('/catalog/addcategory', methods=['GET', 'POST'])
 def addCategory():
+    if 'username' not in login_session:
+        return redirect('/login')
     if request.method == 'POST':
         newCategory = Category(
-            name=request.form['name'])
+            name=request.form['name'],
+            user_id=login_session['user_id'])
+        print newCategory
         session.add(newCategory)
         session.commit()
         flash('Category Successfully Added!')
@@ -266,10 +270,46 @@ def addCategory():
     else:
         return render_template('addcategory.html')
 
+# Edit a category
+@app.route('/catalog/<path:category_name>/edit', methods=['GET', 'POST'])
+def editCategory(category_name):
+    if 'username' not in login_session:
+        return redirect('/login')
+    editedCategory = session.query(Category).filter_by(name=category_name).one()
+    category = session.query(Category).filter_by(name=category_name).one()
+    # See if the logged in user is the owner of item
+    creator = getUserInfo(editedCategory.user_id)
+    user = getUserInfo(login_session['user_id'])
+    # If logged in user != item owner redirect them
+    if creator.id != login_session['user_id']:
+        flash ("You cannot edit this Category. This Category belongs to %s" % creator.name)
+        return redirect(url_for('showCatalog'))
+    # POST methods
+    if request.method == 'POST':
+        if request.form['name']:
+            editedCategory.name = request.form['name']
+        session.add(editedCategory)
+        session.commit()
+        flash('Category Item Successfully Edited!')
+        return  redirect(url_for('showCatalog'))
+    else:
+        return render_template('editcategory.html',
+                                categories=editedCategory,
+                                category = category)
+
 # Delete a category
 @app.route('/catalog/<path:category_name>/delete', methods=['GET', 'POST'])
 def deleteCategory(category_name):
+    if 'username' not in login_session:
+        return redirect('/login')
     categoryToDelete = session.query(Category).filter_by(name=category_name).one()
+    # See if the logged in user is the owner of item
+    creator = getUserInfo(categoryToDelete.user_id)
+    user = getUserInfo(login_session['user_id'])
+    # If logged in user != item owner redirect them
+    if creator.id != login_session['user_id']:
+        flash ("You cannot delete this Category. This Category belongs to %s" % creator.name)
+        return redirect(url_for('showCatalog'))
     if request.method =='POST':
         session.delete(categoryToDelete)
         session.commit()
