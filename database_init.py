@@ -63,7 +63,7 @@ session.add(Category1)
 session.commit()
 
 Category2 = Category(name="Cars",
-                      user_id=1)
+                      user_id=2)
 session.add(Category2)
 session.commit
 
